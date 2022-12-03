@@ -16,8 +16,8 @@ return new class extends Migration
         $sex = ['MAN', 'WOMAN'];
         $roles = ['USER', 'ADMIN'];
         Schema::table('users', function (Blueprint $table) use ($sex, $roles) {
-            $table->string('phone', 20);
-            $table->string('address', 100);
+            $table->string('phone', 20)->nullable();
+            $table->string('address', 100)->nullable();
             $table->enum('sex', $sex)->nullable();
             $table->boolean('active')->default(false);
             $table->enum('role', $roles);
