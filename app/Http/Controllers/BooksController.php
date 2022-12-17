@@ -13,7 +13,8 @@ class BooksController extends Controller
      */
     public function list()
     {
-
+        // get all book
+        
     }
 
     /**

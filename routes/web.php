@@ -3,6 +3,7 @@
 use App\Http\Controllers\{
     BooksController,
     CategoriesController,
+    CustomAuthController,
     OrderController,
     ProfileController,
 };
@@ -25,7 +26,7 @@ Route::get('/', function () {
 
 Route::middleware('auth')->group(function () {
     /**
-     * Book Route
+     * Book
      */
     Route::name('book.')
         ->controller(BooksController::class)
@@ -39,7 +40,7 @@ Route::middleware('auth')->group(function () {
         });
 
     /**
-     * Category Route
+     * Category
      */
     Route::name('category.')
         ->prefix('category')
@@ -53,7 +54,7 @@ Route::middleware('auth')->group(function () {
         });
 
     /**
-     * Order Route
+     * Order
      */
     Route::name('order.')
         ->prefix('order')
@@ -68,10 +69,34 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+/**
+ * Profile
+ */
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+Route::controller(CustomAuthController::class)->group(function () {
+    /**
+     * Login
+     */
+    Route::get('login', 'index')->name('login');
+    Route::post('custom-login', 'customLogin')->name('login.custom');
+
+    /**
+     * Registration
+     */
+    Route::get('registration', 'registration')->name('registration');
+    Route::post('custom-registration', 'customRegistration')->name('registration.custom');
+
+    /**
+     * Sign out
+     */
+    Route::get('signout', 'signOut')->name('signout');
+});
+
+
+
+//require __DIR__.'/auth.php';

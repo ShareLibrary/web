@@ -14,6 +14,12 @@ Dự án này được viết bằng PHP 8,1, Laravel 9 và sử dụng MySQL.
 
 https://laravel-news.com/laravel-debugbar
 
+#### Template
+
+https://tailwindcss.com/
+<!-- https://adminlte.io/docs/3.2/ -->
+
 ### Tham khảo
 
 https://www.positronx.io/laravel-traits-example/
+https://www.positronx.io/laravel-custom-authentication-login-and-registration-tutorial/
